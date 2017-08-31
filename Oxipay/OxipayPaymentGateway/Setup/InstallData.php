@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Oxipay\OxipayPaymentGateway\Setup;
+namespace Certegy\EziPayPaymentGateway\Setup;
 
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -27,21 +27,21 @@ class InstallData implements InstallDataInterface
         // add default Oxipay Status "Oxipay Processed" for STATE_PROCESSING state
         $statusTable = 'sales_order_status';
         $statusStateTable = 'sales_order_status_state';
-        $oxipayProcessingStatus = 'oxipay_processed';
+        $epProcessingStatus = 'ep_processed';
         $processingState  = \Magento\Sales\Model\Order::STATE_PROCESSING;
 
         //Insert 'oxipay_processed' status
         $setup->getConnection()->insertArray(
             $statusTable,
             array('status', 'label'),
-            array(array('status' => $oxipayProcessingStatus, 'label' => 'Oxipay Processed'))
+            array(array('status' => $epProcessingStatus, 'label' => 'Certegy Ezi-Pay Processed'))
         );
 
         //Associate 'oxipay_processed' status with STATE_PROCESSING state
         $setup->getConnection()->insertArray(
             $statusStateTable,
             array('status', 'state', 'is_default', 'visible_on_front'),
-            array(array('status' => $oxipayProcessingStatus, 'state' => $processingState, 'is_default' => 0, 'visible_on_front' => 1))
+            array(array('status' => $epProcessingStatus, 'state' => $processingState, 'is_default' => 0, 'visible_on_front' => 1))
         );
 
         /**

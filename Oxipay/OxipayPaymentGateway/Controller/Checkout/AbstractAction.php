@@ -1,27 +1,27 @@
 <?php
 
-namespace Oxipay\OxipayPaymentGateway\Controller\Checkout;
+namespace Certegy\EziPayPaymentGateway\Controller\Checkout;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Sales\Model\OrderFactory;
 use Magento\Sales\Model\Order;
-use Oxipay\OxipayPaymentGateway\Helper\Crypto;
-use Oxipay\OxipayPaymentGateway\Helper\Data;
-use Oxipay\OxipayPaymentGateway\Helper\Checkout;
-use Oxipay\OxipayPaymentGateway\Gateway\Config\Config;
+use Certegy\EziPayPaymentGateway\Helper\Crypto;
+use Certegy\EziPayPaymentGateway\Helper\Data;
+use Certegy\EziPayPaymentGateway\Helper\Checkout;
+use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
 use Magento\Framework\Message\ManagerInterface;
 use Psr\Log\LoggerInterface;
 
 /**
- * @package Oxipay\OxipayPaymentGateway\Controller\Checkout
+ * @package Certegy\EziPayPaymentGateway\Controller\Checkout
  */
 abstract class AbstractAction extends Action {
 
-    const LOG_FILE = 'oxipay.log';
-    const OXIPAY_DEFAULT_CURRENCY_CODE = 'AUD';
-    const OXIPAY_DEFAULT_COUNTRY_CODE = 'AU';
+    const LOG_FILE = 'ezipay.log';
+    const EZIPAY_DEFAULT_CURRENCY_CODE = 'AUD';
+    const EZIPAY_DEFAULT_COUNTRY_CODE = 'AU';
 
     private $_context;
 

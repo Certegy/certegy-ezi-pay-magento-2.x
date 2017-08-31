@@ -7,7 +7,7 @@
 /**
  * Image config field renderer
  */
-namespace Oxipay\OxipayPaymentGateway\Block\System\Config\Form\Field;
+namespace Certegy\EziPayPaymentGateway\Block\System\Config\Form\Field;
 
 /**
  * Class Image Field

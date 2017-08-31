@@ -1,15 +1,15 @@
 <?php
 
-namespace Oxipay\OxipayPaymentGateway\Controller\Checkout;
+namespace Certegy\EziPayPaymentGateway\Controller\Checkout;
 
 use Magento\Sales\Model\Order;
-use Oxipay\OxipayPaymentGateway\Helper\Crypto;
-use Oxipay\OxipayPaymentGateway\Helper\Data;
-use Oxipay\OxipayPaymentGateway\Gateway\Config\Config;
-use Oxipay\OxipayPaymentGateway\Controller\Checkout\AbstractAction;
+use Certegy\EziPayPaymentGateway\Helper\Crypto;
+use Certegy\EziPayPaymentGateway\Helper\Data;
+use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
+use Certegy\EziPayPaymentGateway\Controller\Checkout\AbstractAction;
 
 /**
- * @package Oxipay\OxipayPaymentGateway\Controller\Checkout
+ * @package Certegy\EziPayPaymentGateway\Controller\Checkout
  */
 class Cancel extends AbstractAction {
     
@@ -19,9 +19,9 @@ class Cancel extends AbstractAction {
 
         if ($order && $order->getId()) {
             $this->getLogger()->debug('Requested order cancellation by customer. OrderId: ' . $order->getIncrementId());
-            $this->getCheckoutHelper()->cancelCurrentOrder("Oxipay: ".($order->getId())." was cancelled by the customer.");
+            $this->getCheckoutHelper()->cancelCurrentOrder("Certegy Ezi-Pay: ".($order->getId())." was cancelled by the customer.");
             $this->getCheckoutHelper()->restoreQuote(); //restore cart
-            $this->getMessageManager()->addWarningMessage(__("You have successfully canceled your Oxipay payment. Please click on 'Update Shopping Cart'."));
+            $this->getMessageManager()->addWarningMessage(__("You have successfully canceled your Certegy Ezi-Pay payment. Please click on 'Update Shopping Cart'."));
         }
         $this->_redirect('checkout/cart');
     }

@@ -3,13 +3,13 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Oxipay\OxipayPaymentGateway\Gateway\Request;
+namespace Certegy\EziPayPaymentGateway\Gateway\Request;
 
 use Magento\Sales\Model\Order;
 use Magento\Payment\Gateway\Data\Order\OrderAdapter;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Checkout\Model\Session;
-use Oxipay\OxipayPaymentGateway\Gateway\Config\Config;
+use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
 use Psr\Log\LoggerInterface;
 
 class InitializationRequest implements BuilderInterface
@@ -37,7 +37,7 @@ class InitializationRequest implements BuilderInterface
      */
     private function validateQuote(OrderAdapter $order) {
         if($order->getGrandTotalAmount() < 20) {
-            $this->_session->setOxipayErrorMessage(__("Oxipay doesn't support purchases less than $20."));
+            $this->_session->setOxipayErrorMessage(__("Certegy Ezi-Pay doesn't support purchases less than $20."));
             return false;
         }
 
@@ -53,7 +53,7 @@ class InitializationRequest implements BuilderInterface
 
         $this->_logger->debug('[InitializationRequest][validateQuote]$order->getShippingAddress()->getCountryId():'.($order->getShippingAddress()->getCountryId()));
         if (!in_array($order->getShippingAddress()->getCountryId(), $allowedCountriesArray)) {
-            $this->_session->setOxipayErrorMessage(__('Orders shipped to this country are not supported by Oxipay. Please select a different payment option.'));
+            $this->_session->setOxipayErrorMessage(__('Orders shipped to this country are not supported by Certegy Ezi-Pay. Please select a different payment option.'));
             return false;
         }
 

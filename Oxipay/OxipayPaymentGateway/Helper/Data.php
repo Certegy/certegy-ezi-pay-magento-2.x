@@ -1,9 +1,9 @@
 <?php
 
-namespace Oxipay\OxipayPaymentGateway\Helper;
+namespace Certegy\EziPayPaymentGateway\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
-use Oxipay\OxipayPaymentGateway\Gateway\Config\Config;
+use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\App\Helper\Context;
@@ -18,7 +18,7 @@ use Magento\Payment\Helper\Data as PaymentData;
 class Data extends AbstractHelper {
 
     /**
-     * @var \Oxipay\OxipayPaymentGateway\Gateway\Config\Config
+     * @var \Certegy\EziPayPaymentGateway\Gateway\Config\Config
      */
     protected $_gatewayConfig;
     /**
@@ -71,7 +71,7 @@ class Data extends AbstractHelper {
     /**
      * Creates an Instance of the Helper
      * @param  \Magento\Framework\ObjectManagerInterface $objectManager
-     * @return \Oxipay\OxipayPaymentGateway\Helper\Data
+     * @return \Certegy\EziPayPaymentGateway\Helper\Data
      */
     public static function getInstance($objectManager)
     {
@@ -141,14 +141,14 @@ class Data extends AbstractHelper {
      * @return string
      */
     public function getCompleteUrl() {
-        return $this->getStoreManager()->getStore()->getBaseUrl() . 'oxipay/checkout/success';
+        return $this->getStoreManager()->getStore()->getBaseUrl() . 'ezipay/checkout/success';
     }
 
     /**
      * @return string
      */
     public function getCancelledUrl($orderId) {
-        return $this->getStoreManager()->getStore()->getBaseUrl() . "oxipay/checkout/cancel?orderId=$orderId";
+        return $this->getStoreManager()->getStore()->getBaseUrl() . "ezipay/checkout/cancel?orderId=$orderId";
     }
 
     /**

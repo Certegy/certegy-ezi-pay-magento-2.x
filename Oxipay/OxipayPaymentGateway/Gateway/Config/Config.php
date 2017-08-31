@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Oxipay\OxipayPaymentGateway\Gateway\Config;
+namespace Certegy\EziPayPaymentGateway\Gateway\Config;
 
 /**
  * Class Config.
@@ -12,7 +12,7 @@ namespace Oxipay\OxipayPaymentGateway\Gateway\Config;
  */
 class Config extends \Magento\Payment\Gateway\Config\Config
 {
-    const CODE = 'oxipay_gateway';
+    const CODE = 'ezipay_gateway';
 
     const KEY_ACTIVE = 'active';
     const KEY_TITLE = 'title';
@@ -23,7 +23,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     const KEY_GATEWAY_URL = 'gateway_url';
     const KEY_DEBUG = 'debug';
     const KEY_SPECIFIC_COUNTRY = 'specificcountry';
-    const KEY_OXIPAY_APPROVED_ORDER_STATUS = 'oxipay_approved_order_status';
+    const KEY_EZIPAY_APPROVED_ORDER_STATUS = 'ezipay_approved_order_status';
     const KEY_EMAIL_CUSTOMER = 'email_customer';
     const KEY_AUTOMATIC_INVOICE = 'automatic_invoice';
 
@@ -89,7 +89,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function getOxipayApprovedOrderStatus()
     {
-        return $this->getValue(self::KEY_OXIPAY_APPROVED_ORDER_STATUS);
+        return $this->getValue(self::KEY_EZIPAY_APPROVED_ORDER_STATUS);
     }
 
     /**

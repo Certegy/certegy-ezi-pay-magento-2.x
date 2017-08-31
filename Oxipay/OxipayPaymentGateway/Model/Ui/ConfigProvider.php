@@ -3,7 +3,7 @@
  * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Oxipay\OxipayPaymentGateway\Model\Ui;
+namespace Certegy\EziPayPaymentGateway\Model\Ui;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -11,7 +11,7 @@ use Magento\Customer\Model\Session;
 use Magento\Backend\Model\Session\Quote;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\View\Asset\Repository;
-use Oxipay\OxipayPaymentGateway\Gateway\Config\Config;
+use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
 
 /**
  * Class ConfigProvider
@@ -55,7 +55,7 @@ final class ConfigProvider implements ConfigProviderInterface
             $params = array();
             $params = array_merge(['_secure' => $request->isSecure()], $params);
 
-            $logo = $this->_assetRepo->getUrlWithParams('Oxipay_OxipayPaymentGateway::images/oxipay_logo.png', $params);
+            $logo = $this->_assetRepo->getUrlWithParams('Certegy_EziPayPaymentGateway::images/ezipay_logo.png', $params);
         }
 
         //TODO: use Config

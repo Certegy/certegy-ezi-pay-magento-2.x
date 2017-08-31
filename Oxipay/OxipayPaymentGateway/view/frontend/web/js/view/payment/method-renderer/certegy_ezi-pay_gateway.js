@@ -26,7 +26,7 @@ define(
             redirectAfterPlaceOrder: false,
 
             defaults: {
-                template: 'Oxipay_OxipayPaymentGateway/payment/form'
+                template: 'Certegy_EziPayPaymentGateway/payment/form'
             },
 
             initialize: function() {
@@ -35,7 +35,7 @@ define(
             },
 
             getCode: function() {
-                return 'oxipay_gateway';
+                return 'certegy_ezi-pay_gateway';
             },
 
             getData: function() {
@@ -45,7 +45,7 @@ define(
             },
 
             afterPlaceOrder: function () {
-                window.location.replace(url.build('oxipay/checkout/index'));
+                window.location.replace(url.build('ezipay/checkout/index'));
             },
 
             /*

@@ -1,15 +1,15 @@
 <?php
 
-namespace Oxipay\OxipayPaymentGateway\Controller\Checkout;
+namespace Certegy\EziPayPaymentGateway\Controller\Checkout;
 
 use Magento\Sales\Model\Order;
-use Oxipay\OxipayPaymentGateway\Helper\Crypto;
-use Oxipay\OxipayPaymentGateway\Helper\Data;
-use Oxipay\OxipayPaymentGateway\Gateway\Config\Config;
-use Oxipay\OxipayPaymentGateway\Controller\Checkout\AbstractAction;
+use Certegy\EziPayPaymentGateway\Helper\Crypto;
+use Certegy\EziPayPaymentGateway\Helper\Data;
+use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
+use Certegy\EziPayPaymentGateway\Controller\Checkout\AbstractAction;
 
 /**
- * @package Oxipay\OxipayPaymentGateway\Controller\Checkout
+ * @package Certegy\EziPayPaymentGateway\Controller\Checkout
  */
 class Success extends AbstractAction {
 

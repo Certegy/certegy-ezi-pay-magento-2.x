@@ -6,6 +6,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Oxipay_OxipayPaymentGateway',
+    'Certegy_EziPayPaymentGateway',
     __DIR__
 );

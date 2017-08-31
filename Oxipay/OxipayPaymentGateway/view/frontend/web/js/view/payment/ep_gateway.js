@@ -16,8 +16,8 @@ define(
         'use strict';
         rendererList.push(
             {
-                type: 'oxipay_gateway',
-                component: 'Oxipay_OxipayPaymentGateway/js/view/payment/method-renderer/oxipay_gateway'
+                type: 'certegy_ezi-pay_gateway',
+                component: 'Certegy_EziPayPaymentGateway/js/view/payment/method-renderer/certegy_ezi-pay_gateway'
             }
         );
         /** Add view logic here if needed */
