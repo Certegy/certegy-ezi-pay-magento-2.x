@@ -24,20 +24,20 @@ class InstallData implements InstallDataInterface
          */
         $setup->startSetup();
 
-        // add default Oxipay Status "Oxipay Processed" for STATE_PROCESSING state
+        // add default EziPay Status "EziPay Processed" for STATE_PROCESSING state
         $statusTable = 'sales_order_status';
         $statusStateTable = 'sales_order_status_state';
         $epProcessingStatus = 'ep_processed';
         $processingState  = \Magento\Sales\Model\Order::STATE_PROCESSING;
 
-        //Insert 'oxipay_processed' status
+        //Insert 'ezipay_processed' status
         $setup->getConnection()->insertArray(
             $statusTable,
             array('status', 'label'),
             array(array('status' => $epProcessingStatus, 'label' => 'Certegy Ezi-Pay Processed'))
         );
 
-        //Associate 'oxipay_processed' status with STATE_PROCESSING state
+        //Associate 'ezipay_processed' status with STATE_PROCESSING state
         $setup->getConnection()->insertArray(
             $statusStateTable,
             array('status', 'state', 'is_default', 'visible_on_front'),

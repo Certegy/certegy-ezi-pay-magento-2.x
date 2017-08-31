@@ -1,15 +1,15 @@
 <?php
 
-namespace Oxipay\OxipayPaymentGateway\Controller\Checkout;
+namespace Certegy\EziPayPaymentGateway\Controller\Checkout;
 
 use Magento\Sales\Model\Order;
-use Oxipay\OxipayPaymentGateway\Helper\Crypto;
-use Oxipay\OxipayPaymentGateway\Helper\Data;
-use Oxipay\OxipayPaymentGateway\Gateway\Config\Config;
-use Oxipay\OxipayPaymentGateway\Controller\Checkout\AbstractAction;
+use Certegy\EziPayPaymentGateway\Helper\Crypto;
+use Certegy\EziPayPaymentGateway\Helper\Data;
+use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
+use Certegy\EziPayPaymentGateway\Controller\Checkout\AbstractAction;
 
 /**
- * @package Oxipay\OxipayPaymentGateway\Controller\Checkout
+ * @package Certegy\EziPayPaymentGateway\Controller\Checkout
  */
 class Index extends AbstractAction {
 
@@ -91,10 +91,10 @@ class Index extends AbstractAction {
                 $payload = $this->getPayload($order);
                 $this->postToCheckout($this->getGatewayConfig()->getGatewayUrl(), $payload);
             } else if ($order->getState() === Order::STATE_CANCELED) {
-                $errorMessage = $this->getCheckoutSession()->getOxipayErrorMessage(); //set in InitializationRequest
+                $errorMessage = $this->getCheckoutSession()->getEziPayErrorMessage(); //set in InitializationRequest
                 if ($errorMessage) {
                     $this->getMessageManager()->addWarningMessage($errorMessage);
-                    $errorMessage = $this->getCheckoutSession()->unsOxipayErrorMessage();
+                    $errorMessage = $this->getCheckoutSession()->unsEziPayErrorMessage();
                 }
                 $this->getCheckoutHelper()->restoreQuote(); //restore cart
                 $this->_redirect('checkout/cart');
@@ -103,9 +103,9 @@ class Index extends AbstractAction {
                 $this->_redirect('checkout/cart');
             }
         } catch (Exception $ex) {
-            $this->getLogger()->debug('An exception was encountered in oxipay/checkout/index: ' . $ex->getMessage());
+            $this->getLogger()->debug('An exception was encountered in ezipay/checkout/index: ' . $ex->getMessage());
             $this->getLogger()->debug($ex->getTraceAsString());
-            $this->getMessageManager()->addErrorMessage(__('Unable to start Oxipay Checkout.'));
+            $this->getMessageManager()->addErrorMessage(__('Unable to start EziPay Checkout.'));
         }
     }
 

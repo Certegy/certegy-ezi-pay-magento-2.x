@@ -1,6 +1,5 @@
 <?php
-
-namespace Oxipay\OxipayPaymentGateway\Helper;
+namespace Certegy\EziPayPaymentGateway\Helper;
 
 /**
  * Created by PhpStorm.

@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Oxipay\OxipayPaymentGateway\Helper;
+namespace Certegy\EziPayPaymentGateway\Helper;
 
 use Magento\Sales\Model\Order;
 use Magento\Checkout\Model\Session;
@@ -13,7 +13,7 @@ use Magento\Checkout\Model\Session;
  * Checkout workflow helper
  *
  * Class Checkout
- * @package Oxipay\OxipayPaymentGateway\Helper
+ * @package Certegy\EziPayPaymentGateway\Helper
  */
 class Checkout
 {

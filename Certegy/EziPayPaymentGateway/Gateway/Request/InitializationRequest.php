@@ -37,7 +37,7 @@ class InitializationRequest implements BuilderInterface
      */
     private function validateQuote(OrderAdapter $order) {
         if($order->getGrandTotalAmount() < 20) {
-            $this->_session->setOxipayErrorMessage(__("Certegy Ezi-Pay doesn't support purchases less than $20."));
+            $this->_session->setEziPayErrorMessage(__("Certegy Ezi-Pay doesn't support purchases less than $20."));
             return false;
         }
 
@@ -47,13 +47,13 @@ class InitializationRequest implements BuilderInterface
         $this->_logger->debug('[InitializationRequest][validateQuote]$order->getBillingAddress()->getCountryId():'.($order->getBillingAddress()->getCountryId()));
         if (!in_array($order->getBillingAddress()->getCountryId(), $allowedCountriesArray)) {
             $this->_logger->debug('[InitializationRequest][validateQuote]Country is not in array');
-            $this->_session->setOxipayErrorMessage(__('Orders from this country are not supported by Oxipay. Please select a different payment option.'));
+            $this->_session->setEziPayErrorMessage(__('Orders from this country are not supported by Ezi-Pay. Please select a different payment option.'));
             return false;
         }
 
         $this->_logger->debug('[InitializationRequest][validateQuote]$order->getShippingAddress()->getCountryId():'.($order->getShippingAddress()->getCountryId()));
         if (!in_array($order->getShippingAddress()->getCountryId(), $allowedCountriesArray)) {
-            $this->_session->setOxipayErrorMessage(__('Orders shipped to this country are not supported by Certegy Ezi-Pay. Please select a different payment option.'));
+            $this->_session->setEziPayErrorMessage(__('Orders shipped to this country are not supported by Certegy Ezi-Pay. Please select a different payment option.'));
             return false;
         }
 

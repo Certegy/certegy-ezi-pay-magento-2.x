@@ -83,11 +83,11 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
-     * Get Oxipay Approved Order Status
+     * Get EziPay Approved Order Status
      *
      * @return string
      */
-    public function getOxipayApprovedOrderStatus()
+    public function getEziPayApprovedOrderStatus()
     {
         return $this->getValue(self::KEY_EZIPAY_APPROVED_ORDER_STATUS);
     }

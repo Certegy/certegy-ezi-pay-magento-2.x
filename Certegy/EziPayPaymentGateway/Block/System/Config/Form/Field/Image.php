@@ -27,9 +27,9 @@ class Image extends \Magento\Config\Block\System\Config\Form\Field
         $html = '';
 
         if (!(string)$element->getValue()) {
-            $defaultImage = $this->getViewFileUrl('Oxipay_OxipayPaymentGateway::images/oxipay_logo.png');
+            $defaultImage = $this->getViewFileUrl('Certegy_EziPayPaymentGateway::images/ezipay_logo.png');
             
-            $html .= '<img src="' . $defaultImage . '" alt="Oxipay logo" height="50" width="85" class="small-image-preview v-middle" />';
+            $html .= '<img src="' . $defaultImage . '" alt="Certegy Ezi-Pay logo" height="50" width="85" class="small-image-preview v-middle" />';
             $html .= '<p class="note"><span>Upload a new image if you wish to replace this logo.</span></p>';
         }
 

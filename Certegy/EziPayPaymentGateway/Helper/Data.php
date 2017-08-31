@@ -11,9 +11,9 @@ use Magento\Framework\Locale\ResolverInterface;
 use Magento\Payment\Helper\Data as PaymentData;
 
 /**
- * Class Oxipay_Oxipayments_Helper_Data
+ * Class Certegy_EziPaypayments_Helper_Data
  *
- * Provides helper methods for retrieving data for the oxipay plugin
+ * Provides helper methods for retrieving data for the EziPay plugin
  */
 class Data extends AbstractHelper {
 
@@ -130,7 +130,7 @@ class Data extends AbstractHelper {
     }
 
     /**
-     * get the URL of the configured oxipay gateway checkout
+     * get the URL of the configured ezipay gateway checkout
      * @return string
      */
     public function getCheckoutUrl() {

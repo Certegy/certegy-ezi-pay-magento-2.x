@@ -27,14 +27,14 @@ class Success extends AbstractAction {
         }
 
         if(!$orderId) {
-            $this->getLogger()->debug("Oxipay returned a null order id. This may indicate an issue with the Oxipay payment gateway.");
+            $this->getLogger()->debug("EziPay returned a null order id. This may indicate an issue with the EziPay payment gateway.");
             $this->_redirect('checkout/onepage/error', array('_secure'=> false));
             return;
         }
 
         $order = $this->getOrderById($orderId);
         if(!$order) {
-            $this->getLogger()->debug("Oxipay returned an id for an order that could not be retrieved: $orderId");
+            $this->getLogger()->debug("EziPay returned an id for an order that could not be retrieved: $orderId");
             $this->_redirect('checkout/onepage/error', array('_secure'=> false));
             return;
         }
@@ -52,7 +52,7 @@ class Success extends AbstractAction {
         if ($result == "completed") {
             $orderState = Order::STATE_PROCESSING;
 
-            $orderStatus = $this->getGatewayConfig()->getOxipayApprovedOrderStatus();
+            $orderStatus = $this->getGatewayConfig()->getEziPayApprovedOrderStatus();
             if (!$this->statusExists($orderStatus)) {
                 $orderStatus = $order->getConfig()->getStateDefaultStatus($orderState);
             }
@@ -61,7 +61,7 @@ class Success extends AbstractAction {
 
             $order->setState($orderState)
                 ->setStatus($orderStatus)
-                ->addStatusHistoryComment("Oxipay authorisation success. Transaction #$transactionId")
+                ->addStatusHistoryComment("EziPay authorisation success. Transaction #$transactionId")
                 ->setIsCustomerNotified($emailCustomer);
 
             $order->save();
@@ -71,12 +71,12 @@ class Success extends AbstractAction {
                 $this->invoiceOrder($order, $transactionId);
             }
             
-            $this->getMessageManager()->addSuccessMessage(__("Your payment with Oxipay is complete"));
+            $this->getMessageManager()->addSuccessMessage(__("Your payment with EziPay is complete"));
             $this->_redirect('checkout/onepage/success', array('_secure'=> false));
         } else {
-            $this->getCheckoutHelper()->cancelCurrentOrder("Order #".($order->getId())." was rejected by oxipay. Transaction #$transactionId.");
+            $this->getCheckoutHelper()->cancelCurrentOrder("Order #".($order->getId())." was rejected by EziPay. Transaction #$transactionId.");
             $this->getCheckoutHelper()->restoreQuote(); //restore cart
-            $this->getMessageManager()->addErrorMessage(__("There was an error in the Oxipay payment"));
+            $this->getMessageManager()->addErrorMessage(__("There was an error in the EziPay payment"));
             $this->_redirect('checkout/cart', array('_secure'=> false));
         }
 

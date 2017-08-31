@@ -85,12 +85,12 @@ define(
 
                 if (allowedCountriesArray.indexOf(billingAddress.countryId) == -1 ||
                     allowedCountriesArray.indexOf(shippingAddress.countryId) == -1) {
-                    self.messageContainer.addErrorMessage({'message': 'Orders from this country are not supported by Oxipay. Please select a different payment option.'});
+                    self.messageContainer.addErrorMessage({'message': 'Orders from this country are not supported by Ezi-Pay. Please select a different payment option.'});
                     return false;
                 }
 
                 if (totals.grand_total < 20) {
-                    self.messageContainer.addErrorMessage({'message': 'Oxipay doesn\'t support purchases less than $20.'});
+                    self.messageContainer.addErrorMessage({'message': 'Ezi-Pay doesn\'t support purchases less than $20.'});
                     return false;
                 }
 
@@ -98,21 +98,21 @@ define(
             },
 
             getTitle: function() {
-                return window.checkoutConfig.payment.oxipay_gateway.title;
+                return window.checkoutConfig.payment.ezipay_gateway.title;
             },
 
             getDescription: function() {
-                return window.checkoutConfig.payment.oxipay_gateway.description;
+                return window.checkoutConfig.payment.ezipay_gateway.description;
             },
             
-            getOxipayLogo:function(){
-                var logo = window.checkoutConfig.payment.oxipay_gateway.logo;
+            getEziPayLogo:function(){
+                var logo = window.checkoutConfig.payment.ezipay_gateway.logo;
 
                 return logo;
             },
 
             getAllowedCountries: function() {
-                return window.checkoutConfig.payment.oxipay_gateway.allowed_countries;
+                return window.checkoutConfig.payment.ezipay_gateway.allowed_countries;
             }
 
         });
