@@ -1,9 +1,6 @@
 {
     "name": "certegy/module-ezipay-payment-gateway",
     "description": "Certegy EziPay Payment Gateway",
-    "require": {
-        "magento/framework": "100.0.*"
-    },
     "type": "magento2-module",
     "version": "0.1.0",
     "license": [
