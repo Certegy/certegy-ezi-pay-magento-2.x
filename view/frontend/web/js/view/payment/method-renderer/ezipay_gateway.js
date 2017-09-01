@@ -21,6 +21,8 @@ define(
         'use strict';
 
         var self;
+        console.log("here");
+        debugger;
 
         return Component.extend({
             redirectAfterPlaceOrder: false,
@@ -35,7 +37,7 @@ define(
             },
 
             getCode: function() {
-                return 'certegy_ezi-pay_gateway';
+                return 'ezipay_gateway';
             },
 
             getData: function() {

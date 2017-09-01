@@ -14,10 +14,13 @@ define(
         rendererList
     ) {
         'use strict';
+
+        debugger; 
+        console.log("blue");
         rendererList.push(
             {
-                type: 'certegy_ezi-pay_gateway',
-                component: 'Certegy_EziPayPaymentGateway/js/view/payment/method-renderer/certegy_ezi-pay_gateway'
+                type: 'ezipay_gateway',
+                component: 'Certegy_EziPayPaymentGateway/js/view/payment/method-renderer/ezipay_gateway'
             }
         );
         /** Add view logic here if needed */
