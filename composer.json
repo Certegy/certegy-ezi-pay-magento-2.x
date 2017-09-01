@@ -8,7 +8,7 @@
         "AFL-3.0"
     ],
     "autoload": {
-        "files": [ "registration.php" ],
+        "files": [ "Certegy/EziPayPaymentGateway/registration.php" ],
         "psr-4": {
             "Certegy\\EziPayPaymentGateway\\": ""
         }
