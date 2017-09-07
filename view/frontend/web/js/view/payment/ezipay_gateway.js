@@ -14,9 +14,8 @@ define(
         rendererList
     ) {
         'use strict';
+        
 
-        debugger; 
-        console.log("blue");
         rendererList.push(
             {
                 type: 'ezipay_gateway',

@@ -10,7 +10,7 @@
         <payment>
             <ezipay_gateway>
                 <model>EziPayPaymentGatewayFacade</model>       
-                <title>Certegy Ezi-Pay</title>
+                <title>ezipay_gateway</title>
                 <payment_action>initialize</payment_action> <!--Important: read Magento\Sales\Model\Order-->
                 <active>0</active> <!--Plugin disabled by default. The user must configure it first.-->
                 <is_gateway>1</is_gateway>
