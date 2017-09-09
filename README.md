@@ -9,18 +9,19 @@ This assumes that you have signed the required Merchant Agreement and have been 
  
 1. Add the Certegy Ezi-Pay Repository 
 
-    composer config repositories.certegyezipay git https://github.com/Certegy/certegy-ezipay-magento-2.x.git
+        composer config repositories.certegyezipay git https://github.com/Certegy/certegy-ezipay-magento-2.x.git
 
 2. Require the Certegy Ezi-Pay Payment Gateway Module
 
-    composer require certegy/module-ezipay-payment-gateway:dev-master
+        composer require certegy/module-ezipay-payment-gateway:dev-master
 
 3. Enable the module 
-   . /bin/magento module:enable Certegy_EzipayPaymentGateway --clear-static-content
+       
+       ./bin/magento module:enable Certegy_EzipayPaymentGateway --clear-static-content
 
 4. Update the Database 
 
-   ./bin/magento setup:upgrade
+       ./bin/magento setup:upgrade
 
 5.  Configure the plugin
 
