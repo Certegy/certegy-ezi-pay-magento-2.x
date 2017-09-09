@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Certegy\EziPayPaymentGateway\Gateway\Config;
+namespace Certegy\EzipayPaymentGateway\Gateway\Config;
 
 /**
  * Class Config.
@@ -23,7 +23,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     const KEY_GATEWAY_URL = 'gateway_url';
     const KEY_DEBUG = 'debug';
     const KEY_SPECIFIC_COUNTRY = 'specificcountry';
-    const KEY_EZIPAY_APPROVED_ORDER_STATUS = 'ezipay_approved_order_status';
+    const KEY_APPROVED_ORDER_STATUS = 'ezipay_approved_order_status';
     const KEY_EMAIL_CUSTOMER = 'email_customer';
     const KEY_AUTOMATIC_INVOICE = 'automatic_invoice';
 
@@ -83,13 +83,13 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
-     * Get EziPay Approved Order Status
+     * Get Approved Order Status
      *
      * @return string
      */
-    public function getEziPayApprovedOrderStatus()
+    public function getApprovedOrderStatus()
     {
-        return $this->getValue(self::KEY_EZIPAY_APPROVED_ORDER_STATUS);
+        return $this->getValue(self::KEY_APPROVED_ORDER_STATUS);
     }
 
     /**

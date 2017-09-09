@@ -1,15 +1,15 @@
 <?php
 
-namespace Certegy\EziPayPaymentGateway\Controller\Checkout;
+namespace Certegy\EzipayPaymentGateway\Controller\Checkout;
 
 use Magento\Sales\Model\Order;
-use Certegy\EziPayPaymentGateway\Helper\Crypto;
-use Certegy\EziPayPaymentGateway\Helper\Data;
-use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
-use Certegy\EziPayPaymentGateway\Controller\Checkout\AbstractAction;
+use Certegy\EzipayPaymentGateway\Helper\Crypto;
+use Certegy\EzipayPaymentGateway\Helper\Data;
+use Certegy\EzipayPaymentGateway\Gateway\Config\Config;
+use Certegy\EzipayPaymentGateway\Controller\Checkout\AbstractAction;
 
 /**
- * @package Certegy\EziPayPaymentGateway\Controller\Checkout
+ * @package Certegy\EzipayPaymentGateway\Controller\Checkout
  */
 class Success extends AbstractAction {
 
@@ -27,14 +27,14 @@ class Success extends AbstractAction {
         }
 
         if(!$orderId) {
-            $this->getLogger()->debug("EziPay returned a null order id. This may indicate an issue with the EziPay payment gateway.");
+            $this->getLogger()->debug("Certegy Ezi-Pay returned a null order id. This may indicate an issue with the Certegy Ezi-Pay payment gateway.");
             $this->_redirect('checkout/onepage/error', array('_secure'=> false));
             return;
         }
 
         $order = $this->getOrderById($orderId);
         if(!$order) {
-            $this->getLogger()->debug("EziPay returned an id for an order that could not be retrieved: $orderId");
+            $this->getLogger()->debug("Certegy Ezi-Pay returned an id for an order that could not be retrieved: $orderId");
             $this->_redirect('checkout/onepage/error', array('_secure'=> false));
             return;
         }
@@ -52,7 +52,7 @@ class Success extends AbstractAction {
         if ($result == "completed") {
             $orderState = Order::STATE_PROCESSING;
 
-            $orderStatus = $this->getGatewayConfig()->getEziPayApprovedOrderStatus();
+            $orderStatus = $this->getGatewayConfig()->getApprovedOrderStatus();
             if (!$this->statusExists($orderStatus)) {
                 $orderStatus = $order->getConfig()->getStateDefaultStatus($orderState);
             }
@@ -61,7 +61,7 @@ class Success extends AbstractAction {
 
             $order->setState($orderState)
                 ->setStatus($orderStatus)
-                ->addStatusHistoryComment("EziPay authorisation success. Transaction #$transactionId")
+                ->addStatusHistoryComment("Certegy Ezi-Pay authorisation success. Transaction #$transactionId")
                 ->setIsCustomerNotified($emailCustomer);
 
             $order->save();
@@ -71,12 +71,12 @@ class Success extends AbstractAction {
                 $this->invoiceOrder($order, $transactionId);
             }
             
-            $this->getMessageManager()->addSuccessMessage(__("Your payment with EziPay is complete"));
+            $this->getMessageManager()->addSuccessMessage(__("Your payment with Certegy Ezi-Pay is complete"));
             $this->_redirect('checkout/onepage/success', array('_secure'=> false));
         } else {
-            $this->getCheckoutHelper()->cancelCurrentOrder("Order #".($order->getId())." was rejected by EziPay. Transaction #$transactionId.");
+            $this->getCheckoutHelper()->cancelCurrentOrder("Order #".($order->getId())." was rejected by Certegy Ezi-Pay. Transaction #$transactionId.");
             $this->getCheckoutHelper()->restoreQuote(); //restore cart
-            $this->getMessageManager()->addErrorMessage(__("There was an error in the EziPay payment"));
+            $this->getMessageManager()->addErrorMessage(__("There was an error in the Certegy Ezi-Pay payment"));
             $this->_redirect('checkout/cart', array('_secure'=> false));
         }
 

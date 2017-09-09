@@ -1,5 +1,6 @@
 <?php
-namespace Certegy\EziPayPaymentGateway\Helper;
+
+namespace Certegy\EzipayPaymentGateway\Helper;
 
 /**
  * Created by PhpStorm.

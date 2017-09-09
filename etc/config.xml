@@ -9,15 +9,15 @@
     <default>
         <payment>
             <ezipay_gateway>
-                <model>EziPayPaymentGatewayFacade</model>       
-                <title>ezipay_gateway</title>
+                <model>EzipayPaymentGatewayFacade</model>       
+                <title>Certegy Ezi-Pay</title>
                 <payment_action>initialize</payment_action> <!--Important: read Magento\Sales\Model\Order-->
                 <active>0</active> <!--Plugin disabled by default. The user must configure it first.-->
                 <is_gateway>1</is_gateway>
                 <!--<order_status>processing</order_status>--> <!--We set the order status in InitializationRequest-->
-                <description>Pay the easier way</description>
+                <description>No interest ever!</description>
                 <api_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
-                <gateway_url>https://securetest.certegyezipay.com.au/Checkout?platform=default</gateway_url>
+                <gateway_url>https://secure.certegyezipay.com.au/Checkout?platform=default</gateway_url>
                 <specificcountry>AU,NZ</specificcountry>
                 <can_initialize>1</can_initialize> <!--Important: read Magento\Sales\Model\Order-->
                 <can_use_checkout>1</can_use_checkout>

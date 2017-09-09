@@ -1,15 +1,15 @@
 <?php
 
-namespace Certegy\EziPayPaymentGateway\Controller\Checkout;
+namespace Certegy\EzipayPaymentGateway\Controller\Checkout;
 
 use Magento\Sales\Model\Order;
-use Certegy\EziPayPaymentGateway\Helper\Crypto;
-use Certegy\EziPayPaymentGateway\Helper\Data;
-use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
-use Certegy\EziPayPaymentGateway\Controller\Checkout\AbstractAction;
+use Certegy\EzipayPaymentGateway\Helper\Crypto;
+use Certegy\EzipayPaymentGateway\Helper\Data;
+use Certegy\EzipayPaymentGateway\Gateway\Config\Config;
+use Certegy\EzipayPaymentGateway\Controller\Checkout\AbstractAction;
 
 /**
- * @package Certegy\EziPayPaymentGateway\Controller\Checkout
+ * @package Certegy\EzipayPaymentGateway\Controller\Checkout
  */
 class Index extends AbstractAction {
 
@@ -91,10 +91,10 @@ class Index extends AbstractAction {
                 $payload = $this->getPayload($order);
                 $this->postToCheckout($this->getGatewayConfig()->getGatewayUrl(), $payload);
             } else if ($order->getState() === Order::STATE_CANCELED) {
-                $errorMessage = $this->getCheckoutSession()->getEziPayErrorMessage(); //set in InitializationRequest
+                $errorMessage = $this->getCheckoutSession()->getErrorMessage(); //set in InitializationRequest
                 if ($errorMessage) {
                     $this->getMessageManager()->addWarningMessage($errorMessage);
-                    $errorMessage = $this->getCheckoutSession()->unsEziPayErrorMessage();
+                    $errorMessage = $this->getCheckoutSession()->getErrorMessage();
                 }
                 $this->getCheckoutHelper()->restoreQuote(); //restore cart
                 $this->_redirect('checkout/cart');
@@ -105,7 +105,7 @@ class Index extends AbstractAction {
         } catch (Exception $ex) {
             $this->getLogger()->debug('An exception was encountered in ezipay/checkout/index: ' . $ex->getMessage());
             $this->getLogger()->debug($ex->getTraceAsString());
-            $this->getMessageManager()->addErrorMessage(__('Unable to start EziPay Checkout.'));
+            $this->getMessageManager()->addErrorMessage(__('Unable to start Certegy Ezi-Pay Checkout.'));
         }
     }
 

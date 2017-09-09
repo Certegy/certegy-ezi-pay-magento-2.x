@@ -1,15 +1,15 @@
 <?php
 
-namespace Certegy\EziPayPaymentGateway\Controller\Checkout;
+namespace Certegy\EzipayPaymentGateway\Controller\Checkout;
 
 use Magento\Sales\Model\Order;
-use Certegy\EziPayPaymentGateway\Helper\Crypto;
-use Certegy\EziPayPaymentGateway\Helper\Data;
-use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
-use Certegy\EziPayPaymentGateway\Controller\Checkout\AbstractAction;
+use Certegy\EzipayPaymentGateway\Helper\Crypto;
+use Certegy\EzipayPaymentGateway\Helper\Data;
+use Certegy\EzipayPaymentGateway\Gateway\Config\Config;
+use Certegy\EzipayPaymentGateway\Controller\Checkout\AbstractAction;
 
 /**
- * @package Certegy\EziPayPaymentGateway\Controller\Checkout
+ * @package Certegy\EzipayPaymentGateway\Controller\Checkout
  */
 class Cancel extends AbstractAction {
     
@@ -19,7 +19,7 @@ class Cancel extends AbstractAction {
 
         if ($order && $order->getId()) {
             $this->getLogger()->debug('Requested order cancellation by customer. OrderId: ' . $order->getIncrementId());
-            $this->getCheckoutHelper()->cancelCurrentOrder("Certegy Ezi-Pay: ".($order->getId())." was cancelled by the customer.");
+            $this->getCheckoutHelper()->cancelCurrentOrder("EziPay: ".($order->getId())." was cancelled by the customer.");
             $this->getCheckoutHelper()->restoreQuote(); //restore cart
             $this->getMessageManager()->addWarningMessage(__("You have successfully canceled your Certegy Ezi-Pay payment. Please click on 'Update Shopping Cart'."));
         }

@@ -19,16 +19,14 @@ define(
         url,
         quote) {
         'use strict';
-
+        
         var self;
-        console.log("here");
-        debugger;
 
         return Component.extend({
             redirectAfterPlaceOrder: false,
 
             defaults: {
-                template: 'Certegy_EziPayPaymentGateway/payment/form'
+                template: 'Certegy_EzipayPaymentGateway/payment/form'
             },
 
             initialize: function() {
@@ -84,15 +82,21 @@ define(
                     self.messageContainer.addErrorMessage({'message': 'Please enter your billing address details'});
                     return false;
                 }
-
-                if (allowedCountriesArray.indexOf(billingAddress.countryId) == -1 ||
+                /*
+                if (true && allowedCountriesArray.indexOf(billingAddress.countryId) == -1 ||
                     allowedCountriesArray.indexOf(shippingAddress.countryId) == -1) {
-                    self.messageContainer.addErrorMessage({'message': 'Orders from this country are not supported by Ezi-Pay. Please select a different payment option.'});
+                        console.log(allowedCountriesArray.indexOf(billingAddress.countryId));
+
+                        console.log(allowedCountriesArray.indexOf(shippingAddress.countryId));
+                        console.log(shippingAddress);
+                        console.log("Allowed Countries : " + allowedCountries);
+                        console.log(billingAddress);
+                        self.messageContainer.addErrorMessage({'message': 'Orders from this country are not supported by Certegy Ezi-Pay. Please select a different payment option.'});
                     return false;
                 }
-
+                */
                 if (totals.grand_total < 20) {
-                    self.messageContainer.addErrorMessage({'message': 'Ezi-Pay doesn\'t support purchases less than $20.'});
+                    self.messageContainer.addErrorMessage({'message': 'Certegy Ezi-Pay doesn\'t support purchases less than $20.'});
                     return false;
                 }
 
@@ -107,7 +111,7 @@ define(
                 return window.checkoutConfig.payment.ezipay_gateway.description;
             },
             
-            getEziPayLogo:function(){
+            getLogo:function(){
                 var logo = window.checkoutConfig.payment.ezipay_gateway.logo;
 
                 return logo;

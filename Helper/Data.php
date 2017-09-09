@@ -1,9 +1,9 @@
 <?php
 
-namespace Certegy\EziPayPaymentGateway\Helper;
+namespace Certegy\EzipayPaymentGateway\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
-use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
+use Certegy\EzipayPaymentGateway\Gateway\Config\Config;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\App\Helper\Context;
@@ -11,14 +11,14 @@ use Magento\Framework\Locale\ResolverInterface;
 use Magento\Payment\Helper\Data as PaymentData;
 
 /**
- * Class Certegy_EziPaypayments_Helper_Data
+ * Class Certegy_Ezipaypayments_Helper_Data
  *
- * Provides helper methods for retrieving data for the EziPay plugin
+ * Provides helper methods for retrieving data for the Certegy EziPay plugin
  */
 class Data extends AbstractHelper {
 
     /**
-     * @var \Certegy\EziPayPaymentGateway\Gateway\Config\Config
+     * @var \Certegy\EzipayPaymentGateway\Gateway\Config\Config
      */
     protected $_gatewayConfig;
     /**
@@ -71,7 +71,7 @@ class Data extends AbstractHelper {
     /**
      * Creates an Instance of the Helper
      * @param  \Magento\Framework\ObjectManagerInterface $objectManager
-     * @return \Certegy\EziPayPaymentGateway\Helper\Data
+     * @return \Certegy\EzipayPaymentGateway\Helper\Data
      */
     public static function getInstance($objectManager)
     {
@@ -130,7 +130,7 @@ class Data extends AbstractHelper {
     }
 
     /**
-     * get the URL of the configured ezipay gateway checkout
+     * get the URL of the configured EP gateway checkout
      * @return string
      */
     public function getCheckoutUrl() {

@@ -7,7 +7,7 @@
 /**
  * Image config field renderer
  */
-namespace Certegy\EziPayPaymentGateway\Block\System\Config\Form\Field;
+namespace Certegy\EzipayPaymentGateway\Block\System\Config\Form\Field;
 
 /**
  * Class Image Field
@@ -27,10 +27,10 @@ class Image extends \Magento\Config\Block\System\Config\Form\Field
         $html = '';
 
         if (!(string)$element->getValue()) {
-            $defaultImage = $this->getViewFileUrl('Certegy_EziPayPaymentGateway::images/ezipay_logo.png');
+            $defaultImage = $this->getViewFileUrl('Certegy_EzipayPaymentGateway::images/ezipay_logo.png');
             
-            $html .= '<img src="' . $defaultImage . '" alt="Certegy Ezi-Pay logo" height="50" width="85" class="small-image-preview v-middle" />';
-            $html .= '<p class="note"><span>Upload a new image if you wish to replace this logo.</span></p>';
+            $html .= '<img src="' . $defaultImage . '" alt="Certegy Ezi-Pay logo" height="50" width="185" class="small-image-preview v-middle" />';
+            
         }
 
         //the standard image preview is very small- bump the height up a bit and remove the width

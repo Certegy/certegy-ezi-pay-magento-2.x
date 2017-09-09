@@ -3,7 +3,7 @@
     <system>
         <section id="payment">
             <group id="ezipay_gateway" translate="label" sortOrder="100" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Certegy Ezi-Pay Payment Gateway</label>
+                <label>Ezipay Payment Gateway</label>
                 <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
@@ -17,7 +17,7 @@
                 <field id="gateway_logo" translate="label comment" type="image" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Logo</label>
                     <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
-                    <frontend_model>Certegy\EziPayPaymentGateway\Block\System\Config\Form\Field\Image</frontend_model>
+                    <frontend_model>Certegy\EzipayPaymentGateway\Block\System\Config\Form\Field\Image</frontend_model>
                     <upload_dir config="system/filesystem/media" scope_info="1">sales/store/logo</upload_dir>
                     <base_url type="media" scope_info="1">sales/store/logo</base_url>
                 </field>
@@ -31,17 +31,17 @@
                     <validate>required-entry</validate>
                 </field>
                 <field id="gateway_url" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Ezi-Pay Gateway URL</label>
+                    <label>Certegy Ezi-Pay Gateway URL</label>
                     <validate>required-entry</validate>
                 </field>
                 <field id="specificcountry" translate="label" type="multiselect" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Payment from Specific Countries</label>
-                    <source_model>Certegy\EziPayPaymentGateway\Model\Config\Source\RestrictedCountry</source_model>
+                    <source_model>Certegy\EzipayPaymentGateway\Model\Config\Source\RestrictedCountry</source_model>
                 </field>
                 <field id="ezipay_approved_order_status" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Status for Certegy EziPay Approved Orders</label>
+                    <label>Status for Certegy Ezi-Pay Approved Orders</label>
                     <source_model>Magento\Sales\Model\Config\Source\Order\Status\Processing</source_model>
-                    <tooltip>Select ‘Certegy Ezi-Pay Processed’ if you want to easily locate all Ezi-Pay transactions in the Orders page.</tooltip>
+                    <tooltip>Select ‘Ezi-Pay Processed’ if you want to easily locate all Ezi-Pay transactions in the Orders page.</tooltip>
                     <validate>required-entry</validate>
                 </field>
                 <field id="automatic_invoice" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0">

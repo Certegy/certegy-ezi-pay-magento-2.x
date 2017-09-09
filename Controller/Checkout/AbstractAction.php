@@ -1,25 +1,25 @@
 <?php
 
-namespace Certegy\EziPayPaymentGateway\Controller\Checkout;
+namespace Certegy\EzipayPaymentGateway\Controller\Checkout;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Sales\Model\OrderFactory;
 use Magento\Sales\Model\Order;
-use Certegy\EziPayPaymentGateway\Helper\Crypto;
-use Certegy\EziPayPaymentGateway\Helper\Data;
-use Certegy\EziPayPaymentGateway\Helper\Checkout;
-use Certegy\EziPayPaymentGateway\Gateway\Config\Config;
+use Certegy\EzipayPaymentGateway\Helper\Crypto;
+use Certegy\EzipayPaymentGateway\Helper\Data;
+use Certegy\EzipayPaymentGateway\Helper\Checkout;
+use Certegy\EzipayPaymentGateway\Gateway\Config\Config;
 use Magento\Framework\Message\ManagerInterface;
 use Psr\Log\LoggerInterface;
 
 /**
- * @package Certegy\EziPayPaymentGateway\Controller\Checkout
+ * @package Certegy\EzipayPaymentGateway\Controller\Checkout
  */
 abstract class AbstractAction extends Action {
 
-    const LOG_FILE = 'ezipay.log';
+    const LOG_FILE = 'ezi-pay.log';
     const EZIPAY_DEFAULT_CURRENCY_CODE = 'AUD';
     const EZIPAY_DEFAULT_COUNTRY_CODE = 'AU';
 

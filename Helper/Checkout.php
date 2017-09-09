@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Certegy\EziPayPaymentGateway\Helper;
+namespace Certegy\EzipayPaymentGateway\Helper;
 
 use Magento\Sales\Model\Order;
 use Magento\Checkout\Model\Session;
@@ -13,7 +13,7 @@ use Magento\Checkout\Model\Session;
  * Checkout workflow helper
  *
  * Class Checkout
- * @package Certegy\EziPayPaymentGateway\Helper
+ * @package Certegy\EzipayPaymentGateway\Helper
  */
 class Checkout
 {

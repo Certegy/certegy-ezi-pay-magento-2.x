@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Certegy\EziPayPaymentGateway\Setup;
+namespace Certegy\EzipayPaymentGateway\Setup;
 
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -24,24 +24,24 @@ class InstallData implements InstallDataInterface
          */
         $setup->startSetup();
 
-        // add default EziPay Status "EziPay Processed" for STATE_PROCESSING state
+        // add default Ezi-Pay Status "Certegy Ezi-Pay Processed" for STATE_PROCESSING state
         $statusTable = 'sales_order_status';
         $statusStateTable = 'sales_order_status_state';
-        $epProcessingStatus = 'ep_processed';
+        $eziPayProcessingStatus = 'ezipay_processed';
         $processingState  = \Magento\Sales\Model\Order::STATE_PROCESSING;
 
         //Insert 'ezipay_processed' status
         $setup->getConnection()->insertArray(
             $statusTable,
             array('status', 'label'),
-            array(array('status' => $epProcessingStatus, 'label' => 'Certegy Ezi-Pay Processed'))
+            array(array('status' => $eziPayProcessingStatus, 'label' => 'Certegy Ezi-Pay Processed'))
         );
 
         //Associate 'ezipay_processed' status with STATE_PROCESSING state
         $setup->getConnection()->insertArray(
             $statusStateTable,
             array('status', 'state', 'is_default', 'visible_on_front'),
-            array(array('status' => $epProcessingStatus, 'state' => $processingState, 'is_default' => 0, 'visible_on_front' => 1))
+            array(array('status' => $eziPayProcessingStatus, 'state' => $processingState, 'is_default' => 0, 'visible_on_front' => 1))
         );
 
         /**
