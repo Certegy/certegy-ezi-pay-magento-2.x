@@ -41,6 +41,13 @@ class InitializationRequest implements BuilderInterface
             return false;
         }
 
+
+
+        if($order->getGrandTotalAmount() > 1000) {
+            $this->_session->setEziPayErrorMessage(__("Certegy Ezi-Pay doesn't support purchases greater than $1000."));
+            return false;
+        }
+
         $this->_logger->debug('[InitializationRequest][validateQuote]$this->_gatewayConfig->getSpecificCountry():'.($this->_gatewayConfig->getSpecificCountry()));
         $allowedCountriesArray = explode(',', $this->_gatewayConfig->getSpecificCountry());
 
