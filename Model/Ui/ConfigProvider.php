@@ -66,6 +66,9 @@ final class ConfigProvider implements ConfigProviderInterface
                     'description' => $this->_gatewayConfig->getDescription(),
                     'logo' => $logo,
                     'allowed_countries' => $this->_gatewayConfig->getSpecificCountry(),
+                    'isActive' => $this->_gatewayConfig->isActive(),
+                    'minimum_order_total' => $this->_gatewayConfig->getMinimumOrderTotal(),
+                    'maximum_order_total' => $this->_gatewayConfig->getMaximumOrderTotal(),
                 ]
             ]
         ];
