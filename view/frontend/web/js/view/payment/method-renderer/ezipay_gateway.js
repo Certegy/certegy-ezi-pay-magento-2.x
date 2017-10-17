@@ -95,14 +95,31 @@ define(
                     return false;
                 }
                 */
-                if (totals.grand_total < 20) {
-                    self.messageContainer.addErrorMessage({'message': 'Certegy Ezi-Pay doesn\'t support purchases less than $20.'});
+                // debugger;
+                var minimum = this.getMinimumOrderTotal();
+                
+                if (totals.grand_total < minimum) {
+                    self.messageContainer.addErrorMessage({'message': 'Certegy Ezi-Pay doesn\'t support purchases less than minimum $'+minimum});
+                    return false;
+                }
+                
+                var maximum = this.getMaximumOrderTotal();
+                if (totals.grand_total > maximum) {
+                    self.messageContainer.addErrorMessage({'message': 'Certegy Ezi-Pay doesn\'t support purchases greater than $'+maximum});
                     return false;
                 }
 
                 return true;
             },
-
+            isActive: function() {
+                return window.checkoutConfig.payment.ezipay_gateway.isActive;
+            },
+            getMinimumOrderTotal: function () {
+                return window.checkoutConfig.payment.ezipay_gateway.minimum_order_total;
+            },
+            getMaximumOrderTotal: function () {
+                return window.checkoutConfig.payment.ezipay_gateway.maximum_order_total;
+            },
             getTitle: function() {
                 return window.checkoutConfig.payment.ezipay_gateway.title;
             },
