@@ -29,7 +29,7 @@ class Image extends \Magento\Config\Block\System\Config\Form\Field
         if (!(string)$element->getValue()) {
             $defaultImage = $this->getViewFileUrl('Certegy_EzipayPaymentGateway::images/ezipay_logo.png');
             
-            $html .= '<img src="' . $defaultImage . '" alt="Certegy Ezi-Pay logo" height="50" width="185" class="small-image-preview v-middle" />';
+            $html .= '<img src="' . $defaultImage . '" alt="Certegy Ezi-Pay Logo" height="50" width="185" class="small-image-preview v-middle" />';
             
         }
 
