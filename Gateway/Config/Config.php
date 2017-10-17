@@ -26,6 +26,8 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     const KEY_APPROVED_ORDER_STATUS = 'ezipay_approved_order_status';
     const KEY_EMAIL_CUSTOMER = 'email_customer';
     const KEY_AUTOMATIC_INVOICE = 'automatic_invoice';
+    const KEY_MIN_ORDER_TOTAL = 'minimum_order_total';
+    const KEY_MAX_ORDER_TOTAL = 'maximum_order_total';
 
     /**
      * Get Merchant number
@@ -117,6 +119,17 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function isActive()
     {
         return (bool) $this->getValue(self::KEY_ACTIVE);
+    }
+
+    public function getMinimumOrderTotal()
+    {
+
+        return $this->getValue(self::KEY_MIN_ORDER_TOTAL);
+    }
+
+    public function  getMaximumOrderTotal()
+    {
+        return $this->getValue(self::KEY_MAX_ORDER_TOTAL);
     }
 
     /**
