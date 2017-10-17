@@ -3,10 +3,9 @@
 /**
  * Country config field renderer
  */
+namespace Certegy\EzipayPaymentGateway\Model\Config\Source;
 
 use Magento\Directory\Model\Config\Source\Country;
- 
-namespace Certegy\EzipayPaymentGateway\Model\Config\Source;
 
 class RestrictedCountry extends \Magento\Directory\Model\Config\Source\Country 
 {
