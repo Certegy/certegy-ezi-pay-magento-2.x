@@ -1,0 +1,12 @@
+<?php 
+
+    $_product = $block->getProduct(); 
+    
+    if ($_product != null && $block->displayPriceWidget()) {
+
+	// temporarily disable widget 
+        // echo sprintf('<script id="oxipay-price-info" src="https://widgets.oxipay.com.au/content/scripts/price-info.js?productPrice=%s"></script>', $_product->getFinalPrice());
+    }
+
+?>
+
