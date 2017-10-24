@@ -82,20 +82,14 @@ define(
                     self.messageContainer.addErrorMessage({'message': 'Please enter your billing address details'});
                     return false;
                 }
-                /*
+                
                 if (true && allowedCountriesArray.indexOf(billingAddress.countryId) == -1 ||
                     allowedCountriesArray.indexOf(shippingAddress.countryId) == -1) {
-                        console.log(allowedCountriesArray.indexOf(billingAddress.countryId));
-
-                        console.log(allowedCountriesArray.indexOf(shippingAddress.countryId));
-                        console.log(shippingAddress);
-                        console.log("Allowed Countries : " + allowedCountries);
-                        console.log(billingAddress);
                         self.messageContainer.addErrorMessage({'message': 'Orders from this country are not supported by Certegy Ezi-Pay. Please select a different payment option.'});
                     return false;
                 }
-                */
-                // debugger;
+                
+                
                 var minimum = this.getMinimumOrderTotal();
                 
                 if (totals.grand_total < minimum) {
