@@ -34,7 +34,7 @@
                 <can_edit>0</can_edit>
                 <can_review_payment>1</can_review_payment>
                 <can_deny_payment>1</can_deny_payment>
-                <minimum_order_total>20.00</minimum_order_total>
+                <minimum_order_total>100.00</minimum_order_total>
                 <maximum_order_total>1000.00</maximum_order_total>
             </ezipay_gateway>
         </payment>
