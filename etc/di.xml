@@ -14,6 +14,8 @@
             <argument name="infoBlockType" xsi:type="string">Certegy\EzipayPaymentGateway\Block\Info</argument>
             <argument name="valueHandlerPool" xsi:type="object">EzipayPaymentGatewayValueHandlerPool</argument>
             <argument name="commandPool" xsi:type="object">EzipayPaymentGatewayCommandPool</argument>
+            <argument name="jsonResultFactory" xsi:type="object">Magento\Framework\Controller\Result\JsonFactory</argument>
+            
         </arguments>
     </virtualType>
 
@@ -53,6 +55,8 @@
     <type name="Certegy\EzipayPaymentGateway\Gateway\Request\InitializationRequest">
         <arguments>
             <argument name="config" xsi:type="object">Certegy\EzipayPaymentGateway\Gateway\Config\Config</argument>
+            <argument name="config" xsi:type="object">Magento\Framework\Logger\Monolog</argument>            
+            <argument name="config" xsi:type="object">Magento\Checkout\Model\Session</argument>
         </arguments>
     </type>
 
