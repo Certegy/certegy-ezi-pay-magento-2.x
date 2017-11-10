@@ -12,6 +12,7 @@ use Certegy\EzipayPaymentGateway\Helper\Data;
 use Certegy\EzipayPaymentGateway\Helper\Checkout;
 use Certegy\EzipayPaymentGateway\Gateway\Config\Config;
 use Magento\Framework\Message\ManagerInterface;
+use Magento\Framework\Controller\Result\JsonFactory;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -41,6 +42,8 @@ abstract class AbstractAction extends Action {
 
     private $_logger;
 
+    private $_jsonResultFactory;
+
     public function __construct(
         Config $gatewayConfig,
         Session $checkoutSession,
@@ -49,16 +52,21 @@ abstract class AbstractAction extends Action {
         Crypto $cryptoHelper,
         Data $dataHelper,
         Checkout $checkoutHelper,
-        LoggerInterface $logger) {
-        parent::__construct($context);
-        $this->_checkoutSession = $checkoutSession;
-        $this->_orderFactory = $orderFactory;
-        $this->_cryptoHelper = $cryptoHelper;
-        $this->_dataHelper = $dataHelper;
-        $this->_checkoutHelper = $checkoutHelper;
-        $this->_gatewayConfig = $gatewayConfig;
-        $this->_messageManager = $context->getMessageManager();
-        $this->_logger = $logger;
+        LoggerInterface $logger,
+        JsonFactory $jsonResultFactory
+        
+        ) {
+            parent::__construct($context);
+            $this->_checkoutSession = $checkoutSession;
+            $this->_orderFactory = $orderFactory;
+            $this->_cryptoHelper = $cryptoHelper;
+            $this->_dataHelper = $dataHelper;
+            $this->_checkoutHelper = $checkoutHelper;
+            $this->_gatewayConfig = $gatewayConfig;
+            $this->_messageManager = $context->getMessageManager();
+            $this->_logger = $logger;
+            $this->_jsonResultFactory  = $jsonResultFactory;
+            
     }
     
     protected function getContext() {
@@ -95,6 +103,10 @@ abstract class AbstractAction extends Action {
 
     protected function getLogger() {
         return $this->_logger;
+    }
+
+    protected function getResultJsonFactory() {
+        return $this->_jsonResultFactory;
     }
     
     protected function getOrder()
