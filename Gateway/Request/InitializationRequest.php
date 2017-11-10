@@ -36,14 +36,15 @@ class InitializationRequest implements BuilderInterface
      * @throws Mage_Api_Exception
      */
     private function validateQuote(OrderAdapter $order) {
-        if($order->getGrandTotalAmount() < 20) {
+        
+        // @todo use config
+        if($order->getGrandTotalAmount() < $this->_gatewayConfig->getMinimumOrderTotal()) {
             $this->_session->setEziPayErrorMessage(__("Certegy Ezi-Pay doesn't support purchases less than $20."));
             return false;
         }
 
-
-
-        if($order->getGrandTotalAmount() > 1000) {
+        // @todo use config
+        if($order->getGrandTotalAmount() > $this->_gatewayConfig->getMaximumOrderTotal()) {
             $this->_session->setEziPayErrorMessage(__("Certegy Ezi-Pay doesn't support purchases greater than $1000."));
             return false;
         }
