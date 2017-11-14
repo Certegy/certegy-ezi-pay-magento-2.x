@@ -64,31 +64,37 @@ define(
 
                 self.messageContainer.clear();
 
-                if (!billingAddress) {
-                    self.messageContainer.addErrorMessage({'message': 'Please enter your billing address'});
-                    return false;
-                }
+                
 
-                if (!billingAddress.firstname || 
-                    !billingAddress.lastname ||
-                    !billingAddress.street ||
-                    !billingAddress.city ||
-                    !billingAddress.postcode ||
-                    billingAddress.firstname.length == 0 ||
-                    billingAddress.lastname.length == 0 ||
-                    billingAddress.street.length == 0 ||
-                    billingAddress.city.length == 0 ||
-                    billingAddress.postcode.length == 0) {
-                    self.messageContainer.addErrorMessage({'message': 'Please enter your billing address details'});
-                    return false;
-                }
-                
-                if (true && allowedCountriesArray.indexOf(billingAddress.countryId) == -1 ||
-                    allowedCountriesArray.indexOf(shippingAddress.countryId) == -1) {
+                // don't apply address restrictions to virtual products
+                if (!quote.isVirtual()) {
+
+                    if (!billingAddress) {
+                        self.messageContainer.addErrorMessage({'message': 'Please enter your billing address'});
+                        return false;
+                    }
+
+                    if (!billingAddress.firstname || 
+                        !billingAddress.lastname ||
+                        !billingAddress.street ||
+                        !billingAddress.city ||
+                        !billingAddress.postcode ||
+                        billingAddress.firstname.length == 0 ||
+                        billingAddress.lastname.length == 0 ||
+                        billingAddress.street.length == 0 ||
+                        billingAddress.city.length == 0 ||
+                        billingAddress.postcode.length == 0) {
+                        self.messageContainer.addErrorMessage({'message': 'Please enter your billing address details'});
+                        return false;
+                    }
+
+                    if (allowedCountriesArray.indexOf(billingAddress.countryId) == -1 ||
+                        allowedCountriesArray.indexOf(shippingAddress.countryId) == -1) {
                         self.messageContainer.addErrorMessage({'message': 'Orders from this country are not supported by Certegy Ezi-Pay. Please select a different payment option.'});
-                    return false;
-                }
+                        return false;
+                    }
                 
+                }
                 
                 var minimum = this.getMinimumOrderTotal();
                 
