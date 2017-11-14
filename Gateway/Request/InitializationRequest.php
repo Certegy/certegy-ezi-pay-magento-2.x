@@ -14,9 +14,9 @@ use Psr\Log\LoggerInterface;
 
 class InitializationRequest implements BuilderInterface
 {
-    private $_logger;
-    private $_session;
-    private $_gatewayConfig;
+    protected $_logger;
+    protected $_session;
+    protected $_gatewayConfig;
 
     /**
      * @param ConfigInterface $config
@@ -35,17 +35,17 @@ class InitializationRequest implements BuilderInterface
      * Checks the quote for validity
      * @throws Mage_Api_Exception
      */
-    private function validateQuote(OrderAdapter $order) {
+    protected function validateQuote(OrderAdapter $order) {
         
         // @todo use config
         if($order->getGrandTotalAmount() < $this->_gatewayConfig->getMinimumOrderTotal()) {
-            $this->_session->setEziPayErrorMessage(__("Certegy Ezi-Pay doesn't support purchases less than $20."));
+            $this->_session->setEziPayErrorMessage(__("Certegy Ezi-Pay doesn't support purchases less than ".$this->_gatewayConfig->getMinimumOrderTotal()));
             return false;
         }
 
         // @todo use config
         if($order->getGrandTotalAmount() > $this->_gatewayConfig->getMaximumOrderTotal()) {
-            $this->_session->setEziPayErrorMessage(__("Certegy Ezi-Pay doesn't support purchases greater than $1000."));
+            $this->_session->setEziPayErrorMessage(__("Certegy Ezi-Pay doesn't support purchases greater than ".$this->_gatewayConfig->getMaximumOrderTotal()));
             return false;
         }
 
@@ -90,6 +90,13 @@ class InitializationRequest implements BuilderInterface
         $stateObject = $buildSubject['stateObject'];
 
         $order = $payment->getOrder();
+        $isValid = false;
+        try {
+
+            $isValid = $this->validateQuote($order);
+        } catch(Exception $e) {
+            $this->_logger->debug('[InitializationRequest]'.$e->getMessage());
+        }
 
         if($this->validateQuote($order)) {
             $stateObject->setState(Order::STATE_PENDING_PAYMENT);
