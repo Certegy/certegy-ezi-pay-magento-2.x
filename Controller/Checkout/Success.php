@@ -18,37 +18,13 @@ class Success extends AbstractAction {
     public function execute() {
         $request = $this->getRequest();
         $params = $request->getParams();
-
-        $isValid       = $this->getCryptoHelper()->isValidSignature($params, $this->getGatewayConfig()->getApiKey());
+        
         $result        = $request->get("x_result");
         $orderId       = $request->get("x_reference");
         $transactionId = $request->get("x_gateway_reference");
         $amount        = $request->get("x_amount");
 
-        if(!$isValid) {
-            $msg = 'Possible site forgery detected: invalid response signature.';
-            $this->getLogger()->debug($msg);        
-            
-            if ($this->isPost($request)) {
-                $this->sendJsonResponse(['failed' => $msg]);
-            } else {
-                $this->_redirect('checkout/onepage/error', array('_secure'=> false));
-            }
-            return;
-        }
-        
-        if(!$orderId) {
-
-            $msg = 'Certegy Ezi-Pay returned a null order id. This may indicate an issue with the Certegy Ezi-Pay payment gateway.';
-            $this->getLogger()->debug($msg);
-        
-            if ($this->isPost($request)) {
-                return $this->sendJsonResponse(['failed' => $msg]);
-            } else {
-                $response = $this->_redirect('checkout/onepage/error', array('_secure'=> false));
-            }
-            return;
-        }
+        $this->validateRequest($params);
 
         $order = $this->getOrderById($orderId);
         if(!$order) {
@@ -78,7 +54,7 @@ class Success extends AbstractAction {
             return;
         }
 
-        if ($result == "completed") {
+        if ($result == "completed" && ($order->getState() == Order::STATE_PENDING_PAYMENT)) {
             $orderState = Order::STATE_PROCESSING;
 
             $orderStatus = $this->getGatewayConfig()->getApprovedOrderStatus();
