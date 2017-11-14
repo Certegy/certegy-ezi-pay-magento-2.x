@@ -19,10 +19,17 @@ class Index extends AbstractAction {
             $this->_redirect('checkout/onepage/error', array('_secure'=> false));
         }
 
-        $shippingAddress = $order->getShippingAddress();
         $billingAddress = $order->getBillingAddress();
+        $shippingAddress = null;
 
-        $billingAddressParts = explode(PHP_EOL, $billingAddress->getData('street'));
+        // we dont really need a shipping address when the order is virtual
+        if ($order->getIsVirtual()) {
+            $shippingAddress = $billingAddress;
+        } else {
+            $shippingAddress = $order->getShippingAddress();
+        }
+
+        $billingAddressParts  = explode(PHP_EOL, $billingAddress->getData('street'));
         $shippingAddressParts = explode(PHP_EOL, $shippingAddress->getData('street'));
 
         $orderId = $order->getRealOrderId();
