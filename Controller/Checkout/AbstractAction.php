@@ -136,4 +136,19 @@ abstract class AbstractAction extends Action {
         return \Magento\Framework\App\ObjectManager::getInstance();
     }
 
+    protected function validateRequest($params){
+
+        $isValid       = $this->getCryptoHelper()->isValidSignature($params, $this->getGatewayConfig()->getApiKey());
+        if(!$isValid) {
+            $msg = 'Possible site forgery detected: invalid response signature.';
+            $this->getLogger()->debug($msg);
+
+            if ($this->isPost($request)) {
+                $this->sendJsonResponse(['failed' => $msg]);
+            } else {
+                $this->_redirect('checkout/onepage/error', array('_secure'=> false));
+            }
+            return;
+        }
+    }
 }
