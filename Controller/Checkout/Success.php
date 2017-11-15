@@ -85,11 +85,11 @@ class Success extends AbstractAction {
         } else {
             $this->getCheckoutHelper()->cancelCurrentOrder("Order #".($order->getId())." was rejected by Certegy Ezi-Pay. Transaction #$transactionId.");
             $this->getCheckoutHelper()->restoreQuote(); //restore cart
-            $this->getMessageManager()->addErrorMessage(__("There was an error in the Certegy Ezi-Pay payment"));
+            $this->getMessageManager()->addErrorMessage(__("Your payment was declined by Certegy Ezi-Pay"));
 
 
             if ($this->isPost($request)) {
-                $this->sendJsonResponse(['failed' => 'Order was rejected and has been cancelled by the Sellers system']);
+                $this->sendJsonResponse(['failed' => 'Order was declined and has been cancelled by the Sellers system']);
             } else {
                 $response = $this->_redirect('checkout/cart', array('_secure'=> false));
             }
