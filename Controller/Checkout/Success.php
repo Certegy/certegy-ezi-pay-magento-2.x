@@ -39,6 +39,15 @@ class Success extends AbstractAction {
             return;
         }
 
+
+        $payment = $order->getPayment();
+
+        $paymentMethodInstance = $payment->getMethodInstance();
+
+        if ($paymentMethodInstance->getCode() !== Config::CODE) {
+            return false;
+        }
+
         if($result == "completed" && $order->getState() === Order::STATE_PROCESSING) {
             $this->getLogger()->debug('Order is already complete. Taking no action.');
             if ($this->isPost($request)) {
@@ -80,7 +89,7 @@ class Success extends AbstractAction {
             if ($this->isPost($request)) {
                 $this->sendJsonResponse(['success' =>  "Transaction: #$transactionId completed within Sellers system"]);
             } else {
-                $response = $this->_redirect('checkout/onepage/success', array('_secure'=> false));
+                $this->_redirect('checkout/onepage/success', array('_secure'=> false));
             }
         } else {
             $this->getCheckoutHelper()->cancelCurrentOrder("Order #".($order->getId())." was rejected by Certegy Ezi-Pay. Transaction #$transactionId.");
@@ -91,10 +100,8 @@ class Success extends AbstractAction {
             if ($this->isPost($request)) {
                 $this->sendJsonResponse(['failed' => 'Order was declined and has been cancelled by the Sellers system']);
             } else {
-                $response = $this->_redirect('checkout/cart', array('_secure'=> false));
-            }
-
-            $this->sendResponse($response);
+                $this->_redirect('checkout/cart', array('_secure'=> false));
+            } 
         }
 
     }
